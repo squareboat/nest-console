@@ -12,7 +12,7 @@ Create beautiful CLI commands in your application. A simple NestJS CLI module, c
 
 ## Documentation
 
-To read the complete documentation, [click here](https://opensource.squareboat.com/nest-console/).
+To read the complete documentation, [click here](https://squareboat.com/open-source/nest-console/).
 
 ## Contributing
 
