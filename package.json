@@ -21,6 +21,7 @@
   "private": false,
   "license": "MIT",
   "scripts": {
+    "postinstall": "node postinstall.js",
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "format": "prettier --write \"**/*.ts\"",
     "lint": "eslint 'lib/**/*.ts' --fix",
@@ -49,6 +50,7 @@
     "@nestjs/core": "^6.7.0 || ^7.0.0"
   },
   "dependencies": {
+    "app-root-path": "^3.0.0",
     "chalk": "^4.1.0",
     "cli-table3": "^0.6.0",
     "inquirer": "^7.3.3",
