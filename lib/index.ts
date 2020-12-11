@@ -4,7 +4,7 @@ export * from "./logger";
 export * from "./inquirer";
 export * from "./commands";
 export * from "./explorer";
-export * from "./worker";
+export * from "./runner";
 export * from "./interfaces";
 export * from "./helpers";
 export * from "./module";
