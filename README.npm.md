@@ -1,20 +1,22 @@
-<div align="center"><strong>Integrate event listeners easily inside your nestjs application</strong></div>
+# Nestjs Console
 
-<div align="center">Custom implementation of event listeners. Now, run your decoupled code beautifully without ever bothering of shaking the main code.</div>
+Create beautiful CLI commands in your application. A simple NestJS CLI module, comes packaged with utilities.
 
 ## Features
 
 - *__Quick Setup__* - Quickly setup and configure your application
 
-- *__Loose coupling__* - Run codes in parallel accross modules, so that you never need to tightly couple the code.
+- *__Utilities__* - Comes packed with utilities to let you easily interact with console.
+  
+- *__Beautiful Commands__* - Creating a beautiful command is as easy as creating a simple injector.
 
 ## Documentation
 
-To read the complete documentation, [click here](https://opensource.squareboat.com/nest-events/).
+To read the complete documentation, [click here](https://opensource.squareboat.com/nest-console/).
 
 ## Contributing
-To know about contributing to this package, read the guidelines [here](./CONTRIBUTING.md)
 
+To know about contributing to this package, read the guidelines [here](./CONTRIBUTING.md)
 
 ## About Us
 

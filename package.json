@@ -1,7 +1,7 @@
 {
   "name": "@squareboat/nest-console",
   "version": "0.0.1",
-  "description": " The console package for your NestJS Applications",
+  "description": "The console package for your NestJS Applications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [
