@@ -18,7 +18,7 @@ function handle() {
     if (err) throw err;
     console.log(chalk.green`🚀 Copying cli.js file to ${appRoot.path}/cli`);
     console.log(
-      chalk.yellow`❓ To know more about on how to change default module and path in cli, go to https://squareboat.com/open-source/nest-console/config`
+      chalk.yellow`❓ To know more about on how to change default module and path in cli, go to https://github.com/squareboat/nest-console`
     );
   });
 }
