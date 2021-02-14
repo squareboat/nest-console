@@ -20,7 +20,8 @@ export class CommandRunner {
 
     args = except(args, ["_", "$0", "command"]);
     if (args.options) {
-      return CommandRunner.printOptions(command, args);
+      CommandRunner.printOptions(command, args);
+      return;
     }
 
     await command.target(args);
