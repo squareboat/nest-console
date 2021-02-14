@@ -60,12 +60,8 @@ export class Logger {
     }
 
     const pRows: any[] = [];
-    rows.forEach((r) => 
-      pRows.push(
-        Object.values(r).map((e) => 
-          (e.toString && e.toString()) || e
-        )
-      )
+    rows.forEach((r) =>
+      pRows.push(Object.values(r).map((e) => (e.toString && e.toString()) || e))
     );
 
     const p = new Table({ head: uniqueCols });
