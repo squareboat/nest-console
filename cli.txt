@@ -5,17 +5,21 @@ const core_1 = require('@nestjs/core');
 const console_1 = require('@squareboat/nest-console');
 const yargs = require('yargs');
 const fs = require('fs');
+
 function checkFileExistsSync(filepath){
   let flag = true;
   try{fs.accessSync(filepath, fs.constants.F_OK);}catch(e){flag = false;}
   return flag;
 }
+
 if (!checkFileExistsSync('./dist/app.module.js')) { // CHANGE THE FILE TO CHECK IF NEEDED
   console_1.Logger.error(' PLEASE BUILD THE CLI PROJECT FIRST ');
-  console_1.Logger.info(' run: node build '); // CHANGE THE BUILD COMMAND IF NEEDED
+  console_1.Logger.info('🪄  Run command: `npm run build` '); // CHANGE THE BUILD COMMAND IF NEEDED
   return process.exit();
 }
+
 const app_1 = require('./dist/app.module'); // CHANGE THE IMPORT IF NEEDED
+
 async function bootstrap() {
   const app = await core_1.NestFactory.createApplicationContext(
     app_1.AppModule,
