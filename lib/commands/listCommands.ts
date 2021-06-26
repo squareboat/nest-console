@@ -6,7 +6,7 @@ import { Command, CommandArguments, CommandMeta, _cli } from "..";
 @Command("list", {
   desc: "Command to list all the commands",
 })
-export class ListCommands2 {
+export class ListCommands {
   public async handle(options: CommandArguments): Promise<void> {
     const commands = CommandMeta.getAllCommands();
     const list = [];
