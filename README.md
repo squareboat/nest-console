@@ -2,11 +2,30 @@
 
 Create beautiful CLI commands in your application. A simple NestJS CLI module, comes packaged with utilities.
 
+## Table Of Content
+  * [Features](#features)
+  * [Installation](#installation)
+  * [Getting Started](#getting-started)
+  * [Creating Command](#creating-command)
+    + [Class](#class)
+    + [Method](#method)
+  * [Defining Input](#defining-input)
+    + [Options](#options)
+  * [Command Console I/O](#command-console-i-o)
+    + [Retrieving Passed Options](#retrieving-passed-options)
+    + [Prompting for Input](#prompting-for-input)
+    + [Writing Outputs](#writing-outputs)
+  * [Available Commands](#available-commands)
+  * [Available Options](#available-options)
+  * [Contributing](#contributing)
+  * [About Us](#about-us)
+  * [License](#license)
+
 ## Features
 
 - *__Quick Setup__* - Quickly setup and configure your application
 
-- *__Utilities__* - Comes packed with utilities to let you easily interact with console.
+- *__Utilities__* - Comes packed with utilities to let you easily interact and print.
   
 - *__Beautiful Commands__* - Creating a beautiful command is as easy as creating a simple injector.
 
