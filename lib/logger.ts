@@ -1,5 +1,4 @@
 import * as chalk from "chalk";
-// import { Table } from 'console-table-printer';
 import Table = require("cli-table3");
 
 export class Logger {

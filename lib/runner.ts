@@ -1,5 +1,5 @@
+import chalk = require("chalk");
 import { except, _cli } from "./helpers";
-import { Logger } from "./logger";
 
 export class CommandRunner {
   static async handle(
@@ -38,10 +38,12 @@ export class CommandRunner {
       });
     }
 
+    _cli.info(chalk.bgBlue.whiteBright.bold(" Options "));
+
     if (commandOptions.length) {
-      Logger.table(commandOptions);
+      _cli.table(commandOptions);
     } else {
-      Logger.info("No option found for specified command");
+      _cli.info("No option found for specified command");
     }
   }
 }
