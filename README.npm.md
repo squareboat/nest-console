@@ -43,6 +43,12 @@ OR
 yarn add @squareboat/nest-console
 ```
 
+For NestJS v6.7.x, please use
+
+```
+npm install @squareboat/nest-console^0.0.7
+```
+
 ## Getting Started
 
 Once the `cli` file is copied, you need to open the `cli` file and change the module that you need to pass in `createApplicationContext` method.
