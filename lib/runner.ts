@@ -1,51 +1,79 @@
-import chalk = require("chalk");
-import { except, _cli } from "./helpers";
+import * as pc from "picocolors";
+import { CommandObject } from "./interfaces";
+import { ConsoleIO } from "./consoleIO";
+import { Logger } from "./logger";
+import * as yargsParser from "yargs-parser";
+import { CommandMeta } from "./metadata";
 
 export class CommandRunner {
+  static async run(cmd: string): Promise<void> {
+    const argv = yargsParser(cmd);
+    const command = CommandMeta.getCommand(argv._[0] as string);
+    await CommandRunner.handle(command, argv);
+  }
+
   static async handle(
-    command: Record<string, any>,
+    command: CommandObject | null,
     args: Record<string, any>
   ): Promise<void> {
-    const options = command.options.args || {};
+    if (command == null) {
+      Logger.error("No command found");
+      return;
+    }
 
-    args = except(args, ["_", "$0", "command"]);
     if (args.options) {
-      CommandRunner.printOptions(command, args);
+      CommandRunner.printOptions(command);
       return;
     }
 
-    const requiredOptions = Object.keys(options).filter((k) => options[k].req);
-    const noInputFound = [];
-    for (const option of requiredOptions) {
-      if (!args[option]) noInputFound.push(option);
-    }
-
-    if (noInputFound.length) {
-      _cli.error(` Missing arguments: ${noInputFound.join(", ")} `);
+    const _cli = ConsoleIO.from(command.expression, args);
+    if (_cli.hasErrors && _cli.missingArguments.length > 0) {
+      _cli.error(` Missing Arguments: ${_cli.missingArguments.join(", ")} `);
       return;
     }
 
-    await command.target(args);
+    await command.target(_cli);
     return;
   }
 
-  static printOptions(command: Record<string, any>, args: Record<string, any>) {
-    const options = command.options.args || {};
-    const commandOptions = [];
-    for (const key in options) {
-      commandOptions.push({
-        name: key,
-        description: options[key].desc,
-        required: options[key].req ? "Y" : "",
-      });
+  static printOptions(command: CommandObject) {
+    console.log(pc.bold("Expression: ") + command.expression);
+    if (command.meta.desc) {
+      console.log(pc.bold("Description: ") + command.meta.desc);
+    }
+    console.log("\n");
+
+    if (command.arguments.length > 0) {
+      Logger.success(pc.bgBlue(pc.white(pc.bold(" Arguments "))));
+
+      const list = [];
+      for (const argument of command.arguments) {
+        console.log(argument);
+        list.push({
+          name: argument.name,
+          desc: "No description passed",
+          default: argument.defaultValue,
+          isArray: argument.isArray ? "Y" : "N",
+        });
+      }
+
+      Logger.table(list);
     }
 
-    _cli.info(chalk.bgBlue.whiteBright.bold(" Options "));
+    if (command.options.length > 0) {
+      Logger.success(pc.bgBlue(pc.white(pc.bold(" Options "))));
 
-    if (commandOptions.length) {
-      _cli.table(commandOptions);
-    } else {
-      _cli.info("No option found for specified command");
+      const list = [];
+      for (const option of command.options) {
+        list.push({
+          name: option.name,
+          desc: "",
+          default: option.defaultValue || "null",
+          isArray: option.isArray ? "Y" : "N",
+        });
+      }
+
+      Logger.table(list);
     }
   }
 }

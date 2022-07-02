@@ -1,15 +1,14 @@
 import { Injectable } from "@nestjs/common";
-import * as chalk from "chalk";
-import { Command, CommandArguments, CommandMeta, _cli } from "..";
+import { Command } from "../decorators";
+import { CommandMeta } from "../metadata";
+import * as pc from "picocolors";
+import { ConsoleIO } from "../consoleIO";
 
 @Injectable()
-@Command("list", {
-  desc: "Command to list all the commands",
-})
+@Command("list", { desc: "Command to list all the commands" })
 export class ListCommands {
-  public async handle(options: CommandArguments): Promise<void> {
+  public async handle(_cli: ConsoleIO): Promise<void> {
     const commands = CommandMeta.getAllCommands();
-    const list = [];
     const keys = Object.keys(commands).sort().reverse();
 
     const commandGroups: { [key: string]: string[] } = { "#": [] };
@@ -32,14 +31,14 @@ export class ListCommands {
     }
 
     for (const group in commandGroups) {
-      _cli.success(chalk.bgBlue.whiteBright.bold(" " + group + " "));
+      _cli.success(pc.bgBlue(pc.white(pc.bold(" " + group + " "))));
       const list = [];
       const sortedCommands = commandGroups[group].sort();
       for (const command of sortedCommands) {
-        const options = commands[command].options || {};
+        const options = commands[command].meta || {};
         list.push({
-          command: chalk.greenBright.bold(command),
-          description: options.desc || "Command Description",
+          command: pc.green(pc.bold(command)),
+          description: options.desc || "No Description Passed",
         });
       }
 

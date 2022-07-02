@@ -1,7 +1,12 @@
-import { CommandOptions } from './interfaces';
+import { ArgumentParser } from "./argumentParser";
+import {
+  CommandObject,
+  CommandMetaOptions,
+  GenericFunction,
+} from "./interfaces";
 
 export class CommandMeta {
-  private static commands: Record<string, any> = {};
+  private static commands: Record<string, CommandObject> = {};
 
   /**
    * Add a new command to the command meta
@@ -13,10 +18,17 @@ export class CommandMeta {
    */
   static setCommand(
     command: string,
-    target: Function,
-    options?: CommandOptions,
+    options: CommandMetaOptions,
+    target: GenericFunction
   ): void {
-    CommandMeta.commands[command] = { target, options };
+    const parsedArgument = ArgumentParser.from(command);
+    const { name } = parsedArgument;
+    CommandMeta.commands[name] = {
+      target,
+      expression: command,
+      ...parsedArgument,
+      meta: options,
+    };
     return;
   }
 
@@ -25,7 +37,7 @@ export class CommandMeta {
    *
    * @returns Record<string, any>
    */
-  static getAllCommands(): Record<string, any> {
+  static getAllCommands(): Record<string, CommandObject> {
     return CommandMeta.commands;
   }
 
@@ -35,7 +47,7 @@ export class CommandMeta {
    *
    * @returns Function|null
    */
-  static getCommand(command: string): Record<string, any> | null {
+  static getCommand(command: string): CommandObject | null {
     if (!command) return null;
     const obj = CommandMeta.commands[command];
     return obj || null;
@@ -47,7 +59,7 @@ export class CommandMeta {
    *
    * @returns Function|null
    */
-  static getTarget(command: string): Function | null {
+  static getTarget(command: string): GenericFunction | null {
     const obj = CommandMeta.commands[command];
     return obj ? obj.target : null;
   }

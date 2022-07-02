@@ -3,7 +3,7 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 const core_1 = require('@nestjs/core');
 const console_1 = require('@squareboat/nest-console');
-const yargs = require('yargs');
+const yargs = require('yargs-parser');
 const fs = require('fs');
 
 function checkFileExistsSync(filepath){
@@ -25,7 +25,7 @@ async function bootstrap() {
     app_1.AppModule,
     { logger: false },
   );
-  const argv = yargs.argv;
+  const argv = yargs(process.argv.slice(2));
   const c = argv._[0];
   argv.command = c;
   if (typeof argv.command != 'string') {

@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { DiscoveryService, MetadataScanner } from "@nestjs/core";
-import { COMMAND_NAME, COMMAND_OPTIONS } from "./constants";
+import { SquareboatNestConsoleConstants } from "./constants";
+import { CommandMetaOptions, GenericFunction } from "./interfaces";
 import { CommandMeta } from "./metadata";
 
 @Injectable()
@@ -30,11 +31,18 @@ export class ConsoleExplorer {
     });
   }
 
-  lookupConsoleCommands(instance: Record<string, Function>, key: string) {
+  lookupConsoleCommands(
+    instance: Record<string, GenericFunction>,
+    key: string
+  ) {
     const methodRef = instance[key];
-    const hasCommandMeta = Reflect.hasMetadata(COMMAND_NAME, instance, key);
+    const hasCommandMeta = Reflect.hasMetadata(
+      SquareboatNestConsoleConstants.commandName,
+      instance,
+      key
+    );
     const isClassConsoleCommand = Reflect.hasMetadata(
-      COMMAND_NAME,
+      SquareboatNestConsoleConstants.commandName,
       instance.constructor
     );
 
@@ -43,13 +51,27 @@ export class ConsoleExplorer {
     if (isClassConsoleCommand && key != "handle") return;
 
     const command =
-      Reflect.getMetadata(COMMAND_NAME, instance, key) ||
-      Reflect.getMetadata(COMMAND_NAME, instance.constructor);
+      Reflect.getMetadata(
+        SquareboatNestConsoleConstants.commandName,
+        instance,
+        key
+      ) ||
+      Reflect.getMetadata(
+        SquareboatNestConsoleConstants.commandName,
+        instance.constructor
+      );
 
-    const options =
-      Reflect.getMetadata(COMMAND_OPTIONS, instance, key) ||
-      Reflect.getMetadata(COMMAND_OPTIONS, instance.constructor);
+    const options: CommandMetaOptions =
+      Reflect.getMetadata(
+        SquareboatNestConsoleConstants.commandOptions,
+        instance,
+        key
+      ) ||
+      Reflect.getMetadata(
+        SquareboatNestConsoleConstants.commandOptions,
+        instance.constructor
+      );
 
-    CommandMeta.setCommand(command, methodRef.bind(instance), options || {});
+    CommandMeta.setCommand(command, options, methodRef.bind(instance));
   }
 }

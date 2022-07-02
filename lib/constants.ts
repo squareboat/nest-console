@@ -1,2 +1,4 @@
-export const COMMAND_NAME = "__commandname__";
-export const COMMAND_OPTIONS = "__commandoptions__";
+export class SquareboatNestConsoleConstants {
+  static commandName = "boatjs/command_name";
+  static commandOptions = "boatjs/command_options";
+}

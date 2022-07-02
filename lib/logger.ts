@@ -1,5 +1,5 @@
-import * as chalk from "chalk";
-import Table = require("cli-table3");
+import * as pc from "picocolors";
+import * as Table from "cli-table3";
 
 export class Logger {
   /**
@@ -7,9 +7,17 @@ export class Logger {
    * @param msg
    * @returns void
    */
-  public static info(msg: string, color?: string): void {
-    color = color || "cyan";
-    this.print(msg, color);
+  public static info(msg: string): void {
+    pc.cyan(msg);
+  }
+
+  /**
+   * Use this method to print an information line
+   * @param msg
+   * @returns void
+   */
+  public static warn(msg: string): void {
+    pc.yellow(msg);
   }
 
   /**
@@ -18,7 +26,7 @@ export class Logger {
    * @returns void
    */
   static error(msg: string): void {
-    console.log(chalk.bgRed.bold(msg));
+    console.log(pc.bgRed(pc.bold(msg)));
   }
 
   /**
@@ -27,7 +35,7 @@ export class Logger {
    * @returns void
    */
   static line(): void {
-    console.log(chalk.bgGray("-".repeat(process.stdout.columns / 2)));
+    console.log(pc.gray("-".repeat(process.stdout.columns / 2)));
   }
 
   /**
@@ -36,7 +44,7 @@ export class Logger {
    * @returns void
    */
   static success(msg: string) {
-    this.print(msg, "green");
+    pc.green(msg);
   }
 
   /**
@@ -54,7 +62,7 @@ export class Logger {
     const uniqueCols = [];
     for (const col of columns) {
       uniqueCols.push(
-        chalk.cyan.bold(col.charAt(0).toUpperCase() + col.slice(1))
+        pc.cyan(pc.bold(col.charAt(0).toUpperCase() + col.slice(1)))
       );
     }
 
@@ -69,9 +77,5 @@ export class Logger {
     p.push(...pRows);
 
     console.log(p.toString());
-  }
-
-  static print(msg: string, color: string) {
-    console.log((chalk as Record<string, any>)[color](msg));
   }
 }
