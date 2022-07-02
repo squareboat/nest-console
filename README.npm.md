@@ -74,6 +74,8 @@ export class AppModule {}
 
 Now, whatever command you create in your application will be discovered automatically.
 
+> To be able for the package to discover the command, you need to register the Injectable class inside `providers` property in your module.
+
 ## Creating Command
 
 There are basically two ways through which you can define commands.
@@ -81,7 +83,7 @@ There are basically two ways through which you can define commands.
 - Using the `Command` decorator on an Injectable class
 - Using the `Command` decorator on an Injectable class' method.
 
-> Remember to use the `@Injectable` decorator on the class always, else the command will not be discovered and registered.
+> Remember to use the `@Injectable` decorator on the class always a, else the command will not be discovered and registered.
 
 ### Class
 
