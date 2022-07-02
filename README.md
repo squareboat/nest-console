@@ -14,7 +14,7 @@ Create beautiful CLI commands in your application. A simple NestJS CLI module, c
   - [Arguments](#arguments)
   - [Options](#options)
 - [Command Console I/O](#command-console-i-o)
-  - [Retrieving Passed Options](#retrieving-passed-options)
+  - [Retrieving Inputs](#retrieving-inputs)
   - [Prompting for Input](#prompting-for-input)
   - [Writing Outputs](#writing-outputs)
 - [Available Commands](#available-commands)
@@ -318,6 +318,8 @@ To know about contributing to this package, read the guidelines [here](./CONTRIB
 ## About Us
 
 We are a bunch of dreamers, designers, and futurists. We are high on collaboration, low on ego, and take our happy hours seriously. We'd love to hear more about your product. Let's talk and turn your great ideas into something even greater! We have something in store for everyone. [☎️ 📧 Connect with us!](https://squareboat.com/contact)
+
+We are hiring! Apply now at [careers](https://squareboat.com/careers) page
 
 ## License
 
