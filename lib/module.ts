@@ -30,7 +30,7 @@ export class ConsoleModule {
       global: true,
       module: ConsoleModule,
       imports: [DiscoveryModule],
-      providers: [ConsoleExplorer],
+      providers: [ConsoleExplorer, ListCommands],
     };
   }
 }
