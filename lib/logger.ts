@@ -8,7 +8,7 @@ export class Logger {
    * @returns void
    */
   public static info(msg: string): void {
-    pc.cyan(msg);
+    console.log(pc.cyan(msg));
   }
 
   /**
@@ -17,7 +17,7 @@ export class Logger {
    * @returns void
    */
   public static warn(msg: string): void {
-    pc.yellow(msg);
+    console.log(pc.yellow(msg));
   }
 
   /**
@@ -44,7 +44,7 @@ export class Logger {
    * @returns void
    */
   static success(msg: string) {
-    pc.green(msg);
+    console.log(pc.green(msg));
   }
 
   /**
