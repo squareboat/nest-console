@@ -2,6 +2,7 @@ import { ArgumentParserOutput } from "./interfaces";
 import { ArgumentParser } from "./argumentParser";
 import { Inquirer } from "./inquirer";
 import { Logger } from "./logger";
+import * as ora from "ora";
 
 export class ConsoleIO {
   schema: ArgumentParserOutput;
@@ -170,5 +171,12 @@ export class ConsoleIO {
    */
   async password(question: string, mask = "") {
     return Inquirer.password(question, mask);
+  }
+
+  /**
+   * Create Spinner
+   */
+  spinner(options?: string | ora.Options): ora.Ora {
+    return ora.default(options);
   }
 }

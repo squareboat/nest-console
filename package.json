@@ -1,6 +1,6 @@
 {
   "name": "@squareboat/nest-console",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "The console package for your NestJS Applications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -37,12 +37,12 @@
     "test:e2e:dev": "jest --config ./tests/jest-e2e.json --runInBand --watch"
   },
   "devDependencies": {
-    "@nestjs/common": "^9.2.1",
-    "@nestjs/core": "^9.2.1",
+    "@nestjs/common": "^9.3.9",
+    "@nestjs/core": "^9.3.9",
     "@types/inquirer": "^9.0.3",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.14.0",
     "@types/yargs-parser": "^21.0.0",
-    "typescript": "^4.3.4"
+    "typescript": "^4.9.5"
   },
   "peerDependencies": {
     "@nestjs/common": "^7.0.0 || ^8.0.0 || ^9.0.0",
@@ -52,7 +52,8 @@
   "dependencies": {
     "app-root-path": "^3.1.0",
     "cli-table3": "^0.6.3",
-    "inquirer": "^8.0.0",
+    "inquirer": "^9.1.4",
+    "ora": "^6.1.2",
     "picocolors": "^1.0.0",
     "yargs-parser": "^21.1.1"
   }

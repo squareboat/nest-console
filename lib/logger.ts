@@ -1,5 +1,5 @@
 import * as pc from "picocolors";
-import * as Table from "cli-table3";
+import Table from "cli-table3";
 
 export class Logger {
   /**
