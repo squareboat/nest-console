@@ -1,6 +1,6 @@
 {
   "name": "@squareboat/nest-console",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "The console package for your NestJS Applications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -52,8 +52,8 @@
   "dependencies": {
     "app-root-path": "^3.1.0",
     "cli-table3": "^0.6.3",
-    "inquirer": "^9.1.4",
-    "ora": "^6.1.2",
+    "inquirer": "^8.0.0",
+    "ora": "^5.4.1",
     "picocolors": "^1.0.0",
     "yargs-parser": "^21.1.1"
   }
