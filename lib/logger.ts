@@ -7,8 +7,8 @@ export class Logger {
    * @param msg
    * @returns void
    */
-  public static info(msg: string): void {
-    console.log(pc.cyan(msg));
+  public static info(...msg: Array<string>): void {
+    console.log(pc.cyan(msg.join(" ")));
   }
 
   /**
@@ -16,8 +16,8 @@ export class Logger {
    * @param msg
    * @returns void
    */
-  public static warn(msg: string): void {
-    console.log(pc.yellow(msg));
+  public static warn(...msg: Array<string>): void {
+    console.log(pc.yellow(msg.join(" ")));
   }
 
   /**
@@ -25,8 +25,8 @@ export class Logger {
    * @param msg
    * @returns void
    */
-  static error(msg: string): void {
-    console.log(pc.bgRed(pc.bold(msg)));
+  static error(...msg: Array<string>): void {
+    console.log(pc.bgRed(pc.bold(msg.join(" "))));
   }
 
   /**
@@ -43,8 +43,8 @@ export class Logger {
    * @param msg
    * @returns void
    */
-  static success(msg: string) {
-    console.log(pc.green(msg));
+  static success(...msg: Array<string>) {
+    console.log(pc.green(msg.join(" ")));
   }
 
   /**
