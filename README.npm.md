@@ -325,6 +325,6 @@ We are hiring! Apply now at [careers](https://squareboat.com/careers) page
 
 ## License
 
-The MIT License. Please see License File for more information. Copyright © 2020 SquareBoat.
+The MIT License. Please see License File for more information. Copyright © 2025 SquareBoat.
 
 Made with ❤️ by [Squareboat](https://squareboat.com)
