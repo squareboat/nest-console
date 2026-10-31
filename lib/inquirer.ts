@@ -26,7 +26,7 @@ export class Inquirer {
         name: "confirm_once",
         message,
         type: "confirm",
-        default: defaultVal || true,
+        default: defaultVal ?? true,
       },
     ]);
 

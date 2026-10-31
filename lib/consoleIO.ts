@@ -53,7 +53,7 @@ export class ConsoleIO {
         }
       }
 
-      if (!this.values.arguments[argument.name]) {
+      if (this.values.arguments[argument.name] === undefined) {
         if (argument.defaultValue !== "secret_default_value") {
           this.values.arguments[argument.name] = argument.isArray
             ? [argument.defaultValue]
@@ -69,11 +69,14 @@ export class ConsoleIO {
      * Parse options
      */
     for (const option of this.schema.options) {
+      // `!== undefined` so `--count=0` and `--no-flag` (false) are kept;
+      // an option without a default is null when not passed
       const value = this.argv[option.name];
-      if (value) {
+      if (value !== undefined) {
         this.values.options[option.name] = value;
       } else {
-        this.values.options[option.name] = option.defaultValue;
+        this.values.options[option.name] =
+          option.defaultValue !== "secret_default_value" ? option.defaultValue : null;
       }
     }
 
@@ -82,7 +85,7 @@ export class ConsoleIO {
 
   validateArguments(): void {
     for (const argument of this.schema.arguments) {
-      if (!this.values.arguments[argument.name] && argument.isRequired) {
+      if (this.values.arguments[argument.name] === undefined && argument.isRequired) {
         this.missingArguments.push(argument.name);
       }
     }

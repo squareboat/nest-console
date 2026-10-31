@@ -48,7 +48,6 @@ export class CommandRunner {
 
       const list = [];
       for (const argument of command.arguments) {
-        console.log(argument);
         list.push({
           name: argument.name,
           desc: "No description passed",
