@@ -4,6 +4,11 @@
   "description": "The console package for your NestJS Applications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "cli.txt",
+    "postinstall.js"
+  ],
   "keywords": [
     "nestjs",
     "nestjs-console",

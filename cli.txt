@@ -3,7 +3,9 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 const core_1 = require('@nestjs/core');
 const console_1 = require('@squareboat/nest-console');
-const yargs = require('yargs-parser');
+const path = require('path');
+// yargs-parser is a dependency of nest-console, so resolve it from there (works with pnpm too)
+const yargs = require(require.resolve('yargs-parser', { paths: [path.dirname(require.resolve('@squareboat/nest-console'))] }));
 const fs = require('fs');
 
 function checkFileExistsSync(filepath){

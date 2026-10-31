@@ -44,13 +44,17 @@ OR
 yarn add @squareboat/nest-console
 ```
 
-For NestJS v6.7.x, please use
-
-```
-npm install @squareboat/nest-console^0.0.7
-```
+Version 2 needs NestJS 10, 11 or 12 and Node.js 20.19+ or 22.12+. For NestJS 7 to 9, use `@squareboat/nest-console@^1`. For NestJS v6.7.x, use `@squareboat/nest-console@^0.0.7`.
 
 ## Getting Started
+
+The install script copies a `cli` file to your project root. npm and yarn hide its output, so if there is no `cli` file after install (for example with `--ignore-scripts`, pnpm, or a read-only folder), copy it yourself:
+
+```bash
+cp node_modules/@squareboat/nest-console/cli.txt cli
+```
+
+If your app's `package.json` has `"type": "module"`, name the file `cli.cjs` and run it with `node cli.cjs`.
 
 Once the `cli` file is copied, you need to open the `cli` file and change the module that you need to pass in `createApplicationContext` method.
 
@@ -207,7 +211,7 @@ You may want to ask for input while executing a command. We provide several ways
 To ask for simple input from the user, you can call `ask(question: string)` method.
 
 ```typescript
-const name = _cli.ask("name");
+const name = await _cli.ask("name");
 ```
 
 You may want to ask user about some secret or any password, which ideally should not get printed on the console.
