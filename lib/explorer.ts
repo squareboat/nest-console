@@ -23,11 +23,10 @@ export class ConsoleExplorer {
         return;
       }
 
-      this.metadataScanner.scanFromPrototype(
-        instance,
-        Object.getPrototypeOf(instance),
-        (key: string) => this.lookupConsoleCommands(instance, key)
-      );
+      // getAllMethodNames replaces scanFromPrototype, which is deprecated since Nest 10
+      for (const key of this.metadataScanner.getAllMethodNames(Object.getPrototypeOf(instance))) {
+        this.lookupConsoleCommands(instance, key);
+      }
     });
   }
 
