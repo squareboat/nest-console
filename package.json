@@ -1,6 +1,6 @@
 {
   "name": "@squareboat/nest-console",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "The console package for your NestJS Applications",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -34,25 +34,33 @@
     "prepublish:next": "npm run build",
     "publish:next": "npm publish --access public --tag next",
     "test:e2e": "jest --config ./tests/jest-e2e.json --runInBand",
-    "test:e2e:dev": "jest --config ./tests/jest-e2e.json --runInBand --watch"
+    "test:e2e:dev": "jest --config ./tests/jest-e2e.json --runInBand --watch",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@nestjs/common": "^9.3.9 || ^10.0.0 || ^11.0.0",
-    "@nestjs/core": "^9.3.9 || ^10.0.0 || ^11.0.0",
-    "@types/inquirer": "^9.0.3",
-    "@types/node": "^18.14.0",
-    "@types/yargs-parser": "^21.0.0",
-    "typescript": "^4.9.5"
+    "@nestjs/common": "^12.3.2",
+    "@nestjs/core": "^12.3.2",
+    "@types/inquirer": "^8.2.13",
+    "@types/node": "^20.19.43",
+    "@types/yargs-parser": "^21.0.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "reflect-metadata": "^0.1.13"
+    "@nestjs/common": "^10.0.0 || ^11.0.0 || ^12.0.0",
+    "@nestjs/core": "^10.0.0 || ^11.0.0 || ^12.0.0",
+    "reflect-metadata": "^0.1.13 || ^0.2.0"
   },
   "dependencies": {
     "app-root-path": "^3.1.0",
-    "cli-table3": "^0.6.3",
-    "inquirer": "^8.0.0",
+    "cli-table3": "^0.6.5",
+    "inquirer": "^8.2.7",
     "ora": "^5.4.1",
-    "picocolors": "^1.0.0",
+    "picocolors": "^1.1.1",
     "yargs-parser": "^21.1.1"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
