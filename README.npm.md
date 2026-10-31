@@ -108,6 +108,8 @@ export class AppService {
 }
 ```
 
+> The `cli` file exits as soon as your command returns. If the command does async work, make it `async` and `await` all of it. For an Observable (for example from `HttpService`), use `await lastValueFrom(...)` from `rxjs`. Work that is not awaited, such as a bare `.subscribe()`, gets cut off when the process exits.
+
 Before running the command, you need to build it first.
 
 ```bash
